@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maddy Studios</title>
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/css/book_now.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-image: url('/images/Frame.png'); background-size:cover;background-repeat: no-repeat;background-attachment: fixed; background-color: rgb(29, 28, 28);">
+    <div class="packages">
+        <table class="pack">
+            <tr>
+                <th colspan="3" class="packTr">Packages</th>
+            </tr>
+            <tr>
+                <td class="packTd">Pre wedding</td>
+                <td class="packTd">Photo - 5000 per day</td>
+                <td class="packTd">Video - 6000 per day</td>
+            </tr>
+            <tr>
+                <td class="packTd">Wedding</td>
+                <td class="packTd">Photo - 10000(3 days)</td>
+                <td class="packTd">Video - 18000(3 days)</td>
+            </tr>
+            <tr>
+                <td class="packTd">Portrait</td>
+                <td class="packTd">Photo - 5000 per day</td>
+                <td class="packTd">Video - 5000 per day</td>
+            </tr>
+            <tr>
+                <td class="packTd">Events</td>
+                <td class="packTd">Photo - 7000 per day </td>
+                <td class="packTd">Video - 13000 per day</td>
+            </tr>
+            <tr>
+                <td class="packTd">Products</td>
+                <td class="packTd">Photo - 4000 per day </td>
+                <td class="packTd">Video - 7000 per day</td>
+            </tr>
+            <tr>
+                <td class="packTd">Travel</td>
+                <td class="packTd">Photo - 7000 per day</td>
+                <td class="packTd">Video - 12000 per day</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h2>Book now</h2>
+        </div>
+        {{#if msg}}
+        <p class="{{msg_type}}">{{msg}}</p>
+        {{/if}}
+        <form class="form" id="form" action="/auth/book" method="POST">
+            <div class="form-control">
+                <table class="table">
+                    <tr>
+                        <td><label >First Name:</label></td>
+                        <td><input type="text" placeholder="Enter your name" id="fname" name="Fname" onkeyup="validatefname()">
+                        <small id="fname-error"></small>
+                        </td>
+                        <td><label >Last Name:</label></td>
+                        <td><input type="text" placeholder="Enter your name" id="lname" name="Lname" onkeyup="validatelname()">
+                        <small id="lname-error"></small>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label >Mobile no:</label></td>
+                        <td><input type="text" placeholder="Enter your mobile no" id="phoneno1" name="MobileNo" onkeyup="validatephone1()">
+                        <small id="number-error"></small>
+                        </td>
+                        <td><label >Alter Mobile no:</label></td>
+                        <td><input type="text" placeholder="Enter your name" id="phoneno2" name="AlterNo" onkeyup="validatephone2()">
+                        <small id="number2-error"></small>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Email id:</label></td>
+                        <td><input type="email" placeholder="Enter your email id" id="emailid" name="email" onkeyup="validateemail()">
+                        <small id="email-error"></small>
+                        </td>
+                        <td><label>Date & Time:</label></td>
+                        <td><input type="datetime-local" placeholder="select date and time" id="datetime" name="date_time" onsubmit="validatedays3()" required pattern="[0-9]">
+                        <small id="dt-error"></small>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Permanent address:</label></td>
+                        <td><textarea rows="4" cols="22" placeholder="Enter your address" id="p_address" name="padd" onkeyup="validatepadd()"></textarea>
+                        <br>
+                        <small id="padd-error"></small>
+                        </td>
+                        <td><label>Event place address:</label></td>
+                        <td><textarea rows="4" cols="22" placeholder="Enter your address" id="e_address" name="eadd" onkeyup="validateeadd()"></textarea>
+                        <br>
+                        <small id="eadd-error"></small>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Category:</label></td>
+                        <td><select class="select" id="categories" name="service" onsubmit="validatedays2()" required>
+                            <option value="">--Select the Category--</option>
+                            <option value="Pre wedding">Pre wedding</option>
+                            <option value="Wedding">Wedding</option>
+                            <option value="Portrait">Portrait</option>
+                            <option value="Events">Event</option>
+                            <option value="Products">Products</option>
+                            <option value="Travel">Travel</option>
+                        </select><br>
+                        <small id="cat-error"></small>
+                        </td>
+                        <td><label>Days:</label></td>
+                        <td><select class="select" id="day" name="days" onsubmit="validatedays()" required>
+                            <option value="">--Select the days--</option>
+                            <option value="one">1 Day</option>
+                            <option value="Wedding">2 Days</option>
+                            <option value="Portrait">More than 2 days</option>
+                        </select><br>
+                        <small id="days-error"></small>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <button type="submit" onclick="return validateform()">Submit</button>
+
+        </form>
+
+    </div>
+    <script>
+        const firstName= document.getElementById('fname-error');
+        const lastName= document.getElementById('lname-error');
+        const phone1= document.getElementById('number-error');
+        const phone2= document.getElementById('number2-error');
+        const email= document.getElementById('email-error');
+        const days3= document.getElementById('dt-error');
+        const padd= document.getElementById('padd-error');
+        const eadd= document.getElementById('eadd-error');
+        const days2= document.getElementById('cat-error');
+        const days= document.getElementById('days-error');
+        
+        /* first name*/
+        
+        function validatefname(){
+            const fnamecheck=document.getElementById('fname').value.trim();
+
+            if(fnamecheck===''){
+                firstName.innerHTML='please enter username';
+                document.getElementById("fname").style.borderColor = "red";
+                return false;
+            }
+            else{
+                firstName.innerHTML='';
+                document.getElementById("fname").style.borderColor = "green";
+                return true;
+            }
+        }
+
+        /* last name*/
+
+        function validatelname(){
+            const lnamecheck=document.getElementById('lname').value.trim();
+
+            if(lnamecheck===''){
+                lastName.innerHTML='please enter username';
+                document.getElementById("lname").style.borderColor = "red";
+                return false;
+            }
+            else{
+                lastName.innerHTML='';
+                document.getElementById("lname").style.borderColor = "green";
+                return true;
+            }
+        }
+
+        /* email */
+ 
+        function validateemail(){
+            const emailcheck=document.getElementById('emailid').value.trim();
+
+            if(emailcheck==='')
+            {
+                email.innerHTML='Please enter your email id';
+                document.getElementById("emailid").style.borderColor = "red";
+                return false;
+            }
+            if(!emailcheck.match(/^([a-zA-Z0-9-_\.]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,10})(\.[a-zA-Z]{2,8})?$/)){
+                email.innerHTML='Please enter valid email id';
+                document.getElementById("emailid").style.borderColor = "red";
+                return false;
+            }
+            if(emailcheck.match(/^([a-zA-Z0-9-_\.]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,10})(\.[a-zA-Z]{2,8})?$/)){
+                email.innerHTML='';
+                document.getElementById("emailid").style.borderColor = "green";
+                return true;
+            }
+        }   
+
+        /* phone 1 */
+
+        function validatephone1(){
+            const phonecheck=document.getElementById('phoneno1').value.trim();
+            if(phonecheck=="")
+            { 
+                phone1.innerHTML='Please enter your mobile number';
+                document.getElementById("phoneno1").style.borderColor = "red";
+                return false;
+            }
+            if (isNaN(phonecheck) || phonecheck == ""){
+                phone1.innerHTML='Please enter 10 digit number';
+                document.getElementById("phoneno1").style.borderColor = "red";
+                return false;
+            }
+            if(phonecheck.length>10 || phonecheck<10){
+                phone1.innerHTML='Please enter 10 digit number';
+                document.getElementById("phoneno1").style.borderColor = "red";
+                return false;
+            }
+            else{
+                phone1.innerHTML='';
+                document.getElementById("phoneno1").style.borderColor = "green";
+                return true;
+            }
+            
+        }
+
+        /* phone 2 */
+        
+        function validatephone2(){
+            const phonecheck2=document.getElementById('phoneno2').value.trim();
+            if(phonecheck2== "")
+            { 
+                phone2.innerHTML='Please enter your mobile number';
+                document.getElementById("phoneno2").style.borderColor = "red";
+                return false;
+            }
+            if (isNaN(phonecheck2) || phonecheck2 == ""){
+                phone2.innerHTML='Please enter 10 digit number';
+                document.getElementById("phoneno2").style.borderColor = "red";
+                return false;
+            }
+            if(phonecheck2.length>10 || phonecheck2.length<10){
+                phone2.innerHTML='Please enter 10 digit number';
+                document.getElementById("phoneno2").style.borderColor = "red";
+                return false;
+            }
+            else{
+                phone2.innerHTML='';
+                document.getElementById("phoneno2").style.borderColor = "green";
+                return true;
+            }
+            
+        }
+
+
+        /* padd */
+        
+        function validatepadd(){
+            const paddress=document.getElementById('p_address').value.trim();
+
+            if(paddress==""){
+                padd.innerHTML='please enter your address';
+                document.getElementById("p_address").style.borderColor = "red";
+                return false;
+            }
+            else{
+                padd.innerHTML='';
+                document.getElementById("p_address").style.borderColor = "green";
+                return true;
+            }
+        }
+
+        /* eadd */
+        
+        function validateeadd(){
+            const eaddress=document.getElementById('e_address').value.trim();
+
+            if(eaddress==""){
+                eadd.innerHTML='please enter event address';
+                document.getElementById("e_address").style.borderColor = "red";
+                return false;
+            }
+            else{
+                eadd.innerHTML='';
+                document.getElementById("e_address").style.borderColor = "green";
+                return true;
+            }
+        }
+
+       
+        
+
+        /*date time, categories,  days */
+        /*function validatedays3(){
+            const d2=document.getElementById('datetime').value.trim();
+
+            if(d2==""){
+                days3.innerHTML='please enter date and time';
+                document.getElementById("datetime").style.borderColor = "red";
+                return false;
+            }
+            else{
+                days3.innerHTML='';
+                document.getElementById("datetime").style.borderColor = "green";
+                return true;
+            }
+        }*/
+        function validatedays2(){
+            const d1=document.getElementById('categories').value.trim();
+
+            if(d1==""){
+                days2.innerHTML='please enter categories';
+                document.getElementById("categories").style.borderColor = "red";
+                return false;
+            }
+            else{
+                days2.innerHTML='';
+                document.getElementById("categories").style.borderColor = "green";
+                return true;
+            }
+        }
+        function validatedays(){
+            const d=document.getElementById('day').value.trim();
+
+            if(d==""){
+                days.innerHTML='please enter days';
+                document.getElementById("day").style.borderColor = "red";
+                return false;
+            }
+            else{
+                days.innerHTML='';
+                document.getElementById("day").style.borderColor = "green";
+                return true;
+            }
+        }
+        
+        function validateform()
+        {
+            if(!validatefname() || !validatelname() || !validateemail() || !validatephone() || !validatephone2()
+            || !validatepadd() || !validateeadd() ||  !validatedays2() || !validatedays() || !validatedays3() ){
+            alert('Please fill the details correctly');
+            return false;
+        }
+        }
+</script>
+<header>
+    <h1><img src="/images/logo.png" style="height:30px; width:30px;">Maddy Studios</h1>
+    <nav>
+        <li><i class="fa fa-home"></i><a href="/home" style="text-decoration:none;color: white;">&nbsp;&nbsp;Home</a></li>
+        <div class="dropdown">
+            <span class="p1"><i class="fa fa-fire"></i>&nbsp;&nbsp;Services</span>
+            <div class="dropdown-content">
+                <p>
+                    <a href="/pre_wedding" id="sam">Pre wedding</a>
+                </p>
+                <p>
+                    <a href="/wedding" id="sam">Wedding</a>
+                </p>
+                <p>
+                    <a href="/portrait" id="sam">Portrait</a>
+                </p>
+                <p>
+                    <a href="/events" id="sam">Events</a>
+                </p>
+                <p>
+                    <a href="/products" id="sam">Products</a>
+                </p>
+                <p>
+                    <a href="/travel" id="sam">Travel</a>
+                </p>
+            </div>
+        </div>
+
+        <li><i class="fa fa-address-card"></i><a href="mailto:2k19cse027@kiot.ac.in" style="text-decoration: none;color:white;">&nbsp;&nbsp;Contact</a></li>
+
+    </nav>
+    
+</header>
+<aside >
+    <ul class="content" type="none">
+        <li><i class="fa fa-user-circle"></i><a href="/profile" style="text-decoration:none; color:white" >&nbsp;&nbsp;Profile</a></li>
+        <li><i class="fa fa-arrow-circle-right"></i><a href="/book" style="text-decoration:none;color:white;">&nbsp;&nbsp;Book now</a></li>
+        <li><i class="fa fa-sign-out"></i><a href="/" style="text-decoration:none; color:white" >&nbsp;&nbsp;Log out</a></li>
+    </ul>
+</aside>
+</body>
+</html>

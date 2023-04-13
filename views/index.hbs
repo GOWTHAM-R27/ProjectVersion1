@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maddy Studios</title>
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body
+    style="background-image: url('/images/Frame.png'); background-size:cover;width: fit-content;background-repeat: no-repeat;background-attachment: fixed;">
+    <div class="sign-in">
+        <a href="/login" style="text-decoration: none;"><input type="submit" class="login" value="Login"></a>
+    </div>
+    <div class="content">
+        <h1><img src="/images/logo.png" style="height:100px; width:100px;">Maddy <span class="studio">Studios</span>
+        </h1>
+    </div>
+    <div class="about">
+        <h2>About us</h2>
+        <p>
+            Hey...! We are providing a best photography services like pre wedding, wedding, events, products, portrait,
+            travels. You can book our studio to capture the moments.
+        </p>
+
+    </div>
+    {{!-- <div class="img">
+        <table>
+            <tr>
+                <td><img src="/images/p1.jpg" style="width: 180px;height:230px;"></td>
+                <td><img src="/images/e1.jpg" style="width: 180px;height:230px;"></td>
+                <td><img src="/images/pre wedding.jpg" style="width: 180px;height: 230px;;"></td>
+                <td><img src="/images/wedding.jfif" style="width: 180px;height: 230px;;"></td>
+            </tr>
+        </table>
+    </div> --}}
+    <div>
+        <h3>Gallery</h3>
+    </div>
+
+    <!-- Main view of our gallery -->
+    <div class="main_view">
+        <img src="/images/portimage1.jpg" id="main" alt="IMAGE" class="mainimage">
+    </div>
+
+    <!-- All images with side view -->
+    <div class="side_view">
+        <img src="/images/p1.jpg" onclick="change(this.src)">
+        <img src="/images/e1.jpg" onclick="change(this.src)">
+        <img src="/images/pre wedding.jpg" onclick="change(this.src)">
+        <img src="/images/wedding.jfif" onclick="change(this.src)">
+        <img src="/images/portimage4.jpg" onclick="change(this.src)">
+        <img src="/images/travelimage3.jpg" onclick="change(this.src)">
+        <img src="/images/portimage1.jpg" onclick="change(this.src)">
+        <img src="/images/portraitimage5.jpg" onclick="change(this.src)">
+        <img src="/images/portimage3.jpg" onclick="change(this.src)">
+        <img src="/images/preimage1.jpg" onclick="change(this.src)">
+        <img src="/images/travelimage1.jpg" onclick="change(this.src)">
+        <img src="/images/travelimage2.jpg" onclick="change(this.src)">
+        <img src="/images/product4.jpg" onclick="change(this.src)">
+        <img src="/images/child1.jpg" onclick="change(this.src)">
+        <img src="/images/productimage1.jpg" onclick="change(this.src)">
+        <img src="/images/weddingimage1.jpg" onclick="change(this.src)">
+    </div>
+    <script>
+        const change = src => {
+            document.getElementById('main').src = src
+        }
+    </script>
+    <aside>
+        <ul type="none">
+            <li><a href="https://instagram.com/gowtham_r_27?igshid=Mzc0YWU1OWY=" style="text-decoration: none;color:#fff724;"><i class="fa fa-instagram"></i></a></li>
+            <li><a href=" https://wa.me/qr/J4D5S7W7ATT4F1" style="text-decoration: none;color:#fff724;"><i class="fa fa-whatsapp"></i></a></li>
+            <li><a href="mailto:2k19cse027@kiot.ac.in" style="text-decoration: none;color:#fff724;"><i class="fa fa-envelope"></i></a></li>
+            <li><a href="tel:+91 9095173256" style="text-decoration: none;color:#fff724;"><i class="fa fa-phone"></i></a></li>
+        </ul>
+    </aside>
+
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maddy Studios</title>
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body
+    style="background-image: url('/images/Frame.png'); background-size:cover;background-repeat: no-repeat;background-attachment: fixed; background-color: rgb(29, 28, 28);">
+    <div class="container">
+        <div class="header">
+            <h1>Login</h1>
+
+        </div>
+        <form class="form" name="myform" id="form" action="/auth/login" method="post">
+            {{#if msg}}
+            <p class="{{msg_type}}">{{msg}}</p>
+            {{/if}}
+            <div class="form-control">
+                <lable><i class="fa fa-envelope"></i>&nbsp;&nbsp;Email id:</lable><br>
+                <input type="email" placeholder="Enter your registered email id" id="email" name="email"><br>
+                <lable><i class="fa fa-lock"></i>&nbsp;&nbsp;Password:</lable><br>
+                <input type="password" placeholder="Enter your password" id="password" name="password"><br>
+                <a href="/cp" style="color: black;">Forgot password?</a>
+            </div>
+            <button>Login</button>
+        </form>
+        <div class="header1">
+            <p>Don't have an account? <a href="/register" style="text-decoration:none ;">Create new account</a></p>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
