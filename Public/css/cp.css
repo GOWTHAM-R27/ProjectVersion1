@@ -1,0 +1,50 @@
+.pass{
+    background-color: black;
+    color: white;
+    padding: 20px;
+    width: 380px;
+    height:max-content;
+    top: 0%;
+    left: 0%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border-style:double;
+    border: 2px solid #fff724;
+    
+}
+.form .email{
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+}
+.form .Un{
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+}
+
+.form .Np{
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+}
+.form .Cp{
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+}
+.form .Save{
+    padding: 5px;
+    background-color: black;
+    color: #fff724;
+    border-radius: 10px;
+    border:2px solid #fff724;
+}
+.form .Save:hover{
+    background-color: #fff724;
+    color: black;
+}
